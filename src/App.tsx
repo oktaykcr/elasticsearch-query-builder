@@ -487,7 +487,7 @@ const App: React.FC = () => {
         </div>
       )}  
 
-      <Footer />
+      <Footer theme={theme} />
       
       {/* Bootstrap Toast Notification */}
       <div className="toast-container position-fixed bottom-0 end-0 p-3" style={{ zIndex: 1061 }}>

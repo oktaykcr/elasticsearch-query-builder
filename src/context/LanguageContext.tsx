@@ -65,6 +65,7 @@ const translations = {
     'query.saved': 'Query saved',
     'prettify': 'Prettify',
     'save.changes': 'Save changes',
+    'footer.copyright': 'Elasticsearch Query Builder',
   },
   tr: {
     'app.title': 'Elasticsearch Sorgu Oluşturucu',
@@ -122,6 +123,7 @@ const translations = {
     'query.saved': 'Sorgu kaydedildi',
     'prettify': 'Görünümünü İyileştir',
     'save.changes': 'Değişiklikleri kaydet',
+    'footer.copyright': 'Elasticsearch Query Builder',
   }
 };
 

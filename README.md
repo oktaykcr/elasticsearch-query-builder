@@ -8,6 +8,8 @@ Elasticsearch Query Builder is a web application that allows you to easily creat
 - Add conditions and create nested conditions
 - Save and edit queries
 - Search saved queries
+- Export/Import queries to JSON format
+- Language support (English, Turkish)
 - Light/Dark theme support
 - JSON format output
 - Copy queries
