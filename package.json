@@ -1,6 +1,7 @@
 {
   "name": "elasticsearch-query-builder",
   "version": "1.0.0",
+  "homepage": "https://oktaykcr.github.io/elasticsearch-query-builder",
   "private": true,
   "dependencies": {
     "@types/react": "^18.2.0",
