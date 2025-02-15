@@ -29,7 +29,7 @@ const Navbar: React.FC<NavbarProps> = ({
   return (
     <nav className={`navbar navbar-expand-lg ${theme === 'dark' ? 'navbar-dark bg-dark' : 'navbar-light bg-light'} border-bottom shadow-sm`}>
       <div className="container-fluid">
-        <a className="navbar-brand fw-bold" href="/">
+        <a className="navbar-brand fw-bold" href="/elasticsearch-query-builder">
           {t('app.title')}
         </a>
         <button 
