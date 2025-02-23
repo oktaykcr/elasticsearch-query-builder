@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/elasticsearch-query-builder/static/css/main.28183242.css",
-    "main.js": "/elasticsearch-query-builder/static/js/main.ed4d6d40.js",
+    "main.js": "/elasticsearch-query-builder/static/js/main.37ca3668.js",
     "index.html": "/elasticsearch-query-builder/index.html",
     "main.28183242.css.map": "/elasticsearch-query-builder/static/css/main.28183242.css.map",
-    "main.ed4d6d40.js.map": "/elasticsearch-query-builder/static/js/main.ed4d6d40.js.map"
+    "main.37ca3668.js.map": "/elasticsearch-query-builder/static/js/main.37ca3668.js.map"
   },
   "entrypoints": [
     "static/css/main.28183242.css",
-    "static/js/main.ed4d6d40.js"
+    "static/js/main.37ca3668.js"
   ]
 }
