@@ -25,28 +25,20 @@ interface FieldConfig {
   field: string;
   operator: string;
   value: string;
+  rangeType?: 'gte' | 'lte' | 'gt' | 'lt';
   isNested: boolean;
   nestedPath: string;
   queryType: QueryType;
 }
 
 const getOperatorsForFieldType = (type: string): string[] => {
-  const commonOperators = ['term', 'terms', 'exists'];
-  
   switch (type) {
     case 'text':
-      return ['match', 'match_phrase', 'wildcard', ...commonOperators];
+      return ['match', 'match_phrase', 'wildcard', 'term', 'terms', 'exists', 'range'];
     case 'keyword':
-      return ['term', 'terms', 'prefix', 'exists'];
-    case 'date':
-      return ['range', ...commonOperators];
-    case 'integer':
-    case 'long':
-    case 'float':
-    case 'double':
-      return ['range', 'term', 'terms', 'exists'];
+      return ['term', 'terms', 'prefix', 'exists', 'match', 'range'];
     default:
-      return ['match', ...commonOperators];
+      return ['match', 'term', 'terms', 'exists', 'range'];
   }
 };
 
@@ -153,7 +145,15 @@ const QueryBuilder: React.FC<QueryBuilderProps> = ({ mapping, onQueryGenerated, 
       let innerQuery = {};
       
       // Temel sorguyu oluştur
-      if (config.operator === 'exists') {
+      if (config.operator === 'range') {
+        innerQuery = {
+          range: {
+            [config.field]: {
+              [config.rangeType || 'gte']: config.value
+            }
+          }
+        };
+      } else if (config.operator === 'exists') {
         innerQuery = {
           exists: {
             field: config.field
@@ -367,9 +367,24 @@ const QueryBuilder: React.FC<QueryBuilderProps> = ({ mapping, onQueryGenerated, 
   // Alan güncelleme fonksiyonu
   const handleUpdateFieldConfig = (index: number, updates: Partial<FieldConfig>) => {
     setFieldConfigs(
-      fieldConfigs.map((config, i) => 
-        i === index ? { ...config, ...updates } : config
-      )
+      fieldConfigs.map((config, i) => {
+        if (i === index) {
+          let newConfig = { ...config, ...updates };
+          
+          // Operator range ise ve rangeType yoksa
+          if (updates.operator === 'range' || config.operator === 'range') {
+            newConfig.rangeType = newConfig.rangeType || 'gte';
+          }
+          
+          // QueryType değiştiğinde operator'ü sıfırla
+          if (updates.queryType && updates.queryType !== config.queryType) {
+            newConfig.operator = 'match';
+          }
+          
+          return newConfig;
+        }
+        return config;
+      })
     );
   };
 
@@ -518,6 +533,23 @@ const QueryBuilder: React.FC<QueryBuilderProps> = ({ mapping, onQueryGenerated, 
                   {getNestedPaths().map(path => (
                     <option key={path} value={path}>{path}</option>
                   ))}
+                </select>
+              </div>
+            )}
+
+            {config.operator === 'range' && (
+              <div className="mb-2">
+                <select
+                  className={`form-select ${theme === 'dark' ? 'bg-dark text-white border-light' : ''}`}
+                  value={config.rangeType || 'gte'}
+                  onChange={(e) => handleUpdateFieldConfig(index, { 
+                    rangeType: e.target.value as 'gte' | 'lte' | 'gt' | 'lt' 
+                  })}
+                >
+                  <option value="gte">Greater than or equal (≥)</option>
+                  <option value="lte">Less than or equal (≤)</option>
+                  <option value="gt">Greater than (&gt;)</option>
+                  <option value="lt">Less than (&lt;)</option>
                 </select>
               </div>
             )}

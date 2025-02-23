@@ -66,6 +66,16 @@ const translations = {
     'prettify': 'Prettify',
     'save.changes': 'Save changes',
     'footer.copyright': 'Elasticsearch Query Builder',
+    'new.query': 'New Query',
+    'query.title': 'Query Title',
+    'enter.query.title': 'Enter query title',
+    'query.text': 'Query Text',
+    'enter.query.text': 'Enter query text',
+    'query.saved.success': 'Query saved successfully',
+    'search.queries': 'Search queries...',
+    'query.deleted.success': 'Query deleted successfully',
+    'cancel': 'Cancel',
+    'save': 'Save',
   },
   tr: {
     'app.title': 'Elasticsearch Sorgu Oluşturucu',
@@ -124,6 +134,16 @@ const translations = {
     'prettify': 'Görünümünü İyileştir',
     'save.changes': 'Değişiklikleri kaydet',
     'footer.copyright': 'Elasticsearch Query Builder',
+    'new.query': 'Yeni Sorgu',
+    'query.title': 'Sorgu Başlığı',
+    'enter.query.title': 'Sorgu başlığı girin',
+    'query.text': 'Sorgu Metni',
+    'enter.query.text': 'Sorgu metnini girin',
+    'query.saved.success': 'Sorgu başarıyla kaydedildi',
+    'search.queries': 'Sorguları ara...',
+    'query.deleted.success': 'Sorgu başarıyla silindi',
+    'cancel': 'İptal',
+    'save': 'Kaydet',
   }
 };
 

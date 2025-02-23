@@ -9,7 +9,7 @@ interface FooterProps {
 const Footer: React.FC<FooterProps> = ({ theme }) => {
   const { t } = useLanguage();
   const currentYear = new Date().getFullYear();
-  const version = 'v1.0.0'; // Versiyon bilgisi
+  const version = 'v1.1.0'; // Versiyon bilgisi
 
   return (
     <footer className={`footer py-3 ${theme === 'dark' ? 'bg-dark text-white' : 'bg-light'}`}>
